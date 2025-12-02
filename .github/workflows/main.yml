@@ -1,0 +1,22 @@
+name: Build App
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - run: npm install
+    - run: npx electron-packager . AMAGAR-DS-Results --platform=win32 --arch=x64 --overwrite --ignore=".github" --ignore="README.md" --ignore="LICENSE" --prune=true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: AMAGAR-DS-Results-Windows
+        path: AMAGAR-DS-Results-win32-x64/
