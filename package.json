@@ -1,0 +1,22 @@
+{
+  "name": "amagard-school-result-app",
+  "version": "1.0.0",
+  "description": "School Result Management System",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron",
+    "school"
+  ],
+  "author": "Amagar",
+  "license": "ISC",
+  "dependencies": {
+    "electron-pdf": "0.0.10" 
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-packager": "17.1.2"
+  }
+}
