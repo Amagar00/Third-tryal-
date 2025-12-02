@@ -1,0 +1,131 @@
+ /* PRINT & PREVIEW STYLES - FINAL POLISH */
+:root {
+    --light-bg: #f9fbfd;
+    --dark-green: #1b5e20;
+    --gray-text: #546e7a;
+    --box-bg: #ffffff;
+}
+
+/* --- SCREEN PREVIEW FIX --- */
+/* This ensures the preview looks exactly like the print version */
+@media screen {
+    #report-output { 
+        background: #ccc; 
+        padding: 40px; 
+        display: flex; 
+        justify-content: center; 
+        align-items: flex-start;
+        min-height: 100vh;
+    }
+}
+
+@media print {
+    @page { size: A4; margin: 0; }
+    body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .no-print, .sidebar, .top-bar, .btn { display: none !important; }
+    .main-content { margin: 0; padding: 0; height: auto; overflow: visible; }
+    #report-output { padding: 0; margin: 0; }
+}
+
+/* --- MAIN CONTAINER --- */
+.result-sheet-v2 {
+    background-color: var(--light-bg);
+    color: var(--gray-text);
+    width: 210mm; 
+    min-height: 297mm; /* A4 Height */
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    border: 5px solid var(--dark-green);
+    display: flex; flex-direction: column; gap: 15px;
+    position: relative;
+    background-image: radial-gradient(#1b5e20 0.5px, transparent 0.5px);
+    background-size: 20px 20px; /* Subtle dot pattern */
+    background-color: #fffcf5; /* Cream tint */
+}
+
+/* --- HEADER --- */
+.rs-header {
+    display: flex; height: 120px; gap: 20px;
+    border-bottom: 3px solid var(--dark-green); padding-bottom: 10px;
+}
+.rs-logo-box {
+    width: 120px; height: 120px; background: white;
+    border: 2px solid var(--dark-green); display: flex; align-items: center; justify-content: center;
+    overflow: hidden; /* CRITICAL FIX: Cuts off huge images */
+}
+/* CRITICAL FIX: Force image to fit */
+.rs-logo-box img { width: 100%; height: 100%; object-fit: contain; }
+
+.rs-school-text {
+    flex: 1; text-align: center; display: flex; flex-direction: column; justify-content: center;
+    color: var(--dark-green); text-transform: uppercase; font-weight: bold;
+}
+.rs-school-name { font-size: 28px; line-height: 1.2; }
+.rs-school-addr { font-size: 14px; margin-top: 5px; color: var(--gray-text); }
+.rs-school-motto { font-size: 12px; margin-top: 5px; font-style: italic; color: #000; }
+
+/* --- STUDENT INFO --- */
+.rs-student-info { display: flex; justify-content: space-between; height: 150px; }
+.rs-info-fields { flex: 1; display: flex; flex-direction: column; justify-content: space-between; margin-right: 20px; padding-bottom: 10px; }
+
+.rs-photo-box {
+    width: 120px; height: 150px; background: white;
+    border: 2px solid var(--dark-green);
+    overflow: hidden; /* CRITICAL FIX */
+}
+/* CRITICAL FIX: Force passport to fit */
+.rs-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.rs-input-row { display: flex; align-items: flex-end; gap: 10px; font-size: 14px; font-weight: bold; color: var(--dark-green); }
+.rs-input-field {
+    flex: 1; border: none; border-bottom: 2px solid var(--gray-text);
+    background: transparent; font-size: 16px; font-family: monospace; color: #000; padding-bottom: 2px;
+}
+.rs-label-lg { font-size: 20px; }
+
+/* --- GRID BODY --- */
+.rs-body-grid { display: flex; gap: 15px; flex: 1; align-items: flex-start; }
+
+/* Left Panel (Academics) */
+.rs-academic-panel { flex: 7; display: flex; flex-direction: column; }
+.rs-academic-header {
+    display: grid; grid-template-columns: 3fr 45px 45px 45px 45px 2fr; 
+    background: var(--dark-green); color: white; font-weight: bold; padding: 8px 0; margin-bottom: 5px;
+    text-align: center; font-size: 11px;
+}
+.rs-subject-rows-container { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; }
+.rs-subject-row {
+    display: grid; 
+    grid-template-columns: 3fr 45px 45px 45px 45px 2fr; 
+    gap: 5px; height: 28px;
+}
+.rs-box-input {
+    background: white; border: 2px solid var(--dark-green);
+    height: 100%; width: 100%; padding: 0 5px; font-size: 12px;
+    text-align: center; font-weight: bold;
+}
+.rs-box-input.sub-name { text-align: left; }
+
+/* Stats Footer */
+.rs-stats-footer { display: flex; justify-content: space-between; margin-top: auto; padding-top: 10px; border-top: 2px solid var(--dark-green); }
+.rs-stat-item { display: flex; flex-direction: column; align-items: center; width: 19%; }
+.rs-stat-label { font-size: 9px; font-weight: bold; color: var(--dark-green); margin-bottom: 3px; text-transform: uppercase; }
+.rs-stat-box {
+    width: 100%; height: 35px; background: white;
+    border: 3px solid var(--dark-green); text-align: center; font-size: 16px; font-weight: bold;
+}
+
+/* Right Panel (Skills) */
+.rs-skills-panel { flex: 2.5; display: flex; flex-direction: column; gap: 15px; }
+.rs-skill-section-header { color: white; background: var(--dark-green); font-weight: bold; font-size: 11px; padding: 5px; margin-bottom: 5px; text-align: center; }
+.rs-skill-row { display: flex; gap: 5px; height: 22px; margin-bottom: 3px; }
+.rs-skill-name-box { flex: 1; background: white; border: 1px solid var(--dark-green); font-size: 10px; padding-left: 5px; display: flex; align-items: center; font-weight: bold; }
+.rs-skill-check-box { width: 25px; background: white; border: 1px solid var(--dark-green); text-align: center; }
+.rs-signature-box { height: 60px; background: white; border: 2px solid var(--dark-green); }
+
+/* --- FOOTER --- */
+.rs-footer { display: flex; flex-direction: column; gap: 10px; padding-top: 10px; border-top: 3px solid var(--dark-green); }
+.rs-footer-row { display: flex; justify-content: space-between; }
+.rs-comment-block { display: flex; flex-direction: column; gap: 5px; }
+.rs-comment-line { display: flex; align-items: flex-end; font-size: 12px; font-weight: bold; color: var(--dark-green); }
