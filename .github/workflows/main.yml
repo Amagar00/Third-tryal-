@@ -1,4 +1,4 @@
-name: Build App
+ name: Build App
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '18'
     - run: npm install
     - run: npx electron-packager . AMAGAR-DS-Results --platform=win32 --arch=x64 --overwrite --ignore=".github" --ignore="README.md" --ignore="LICENSE" --prune=true
     - uses: actions/upload-artifact@v4
