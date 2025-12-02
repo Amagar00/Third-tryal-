@@ -1,4 +1,4 @@
-{
+ {
   "name": "amagard-school-result-app",
   "version": "1.0.0",
   "description": "School Result Management System",
@@ -13,7 +13,7 @@
   "author": "Amagar",
   "license": "ISC",
   "dependencies": {
-    "electron-pdf": "0.0.10" 
+    "electron-pdf": "^0.2.0"  // <-- Changed version constraint
   },
   "devDependencies": {
     "electron": "^29.0.0",
