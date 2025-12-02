@@ -13,7 +13,7 @@
   "author": "Amagar",
   "license": "ISC",
   "dependencies": {
-    "electron-pdf": "^0.2.0"  // <-- Changed version constraint
+    "electron-pdf": "^0.2.0" 
   },
   "devDependencies": {
     "electron": "^29.0.0",
