@@ -9,24 +9,14 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Package Electron app
-        run: npx electron-packager . AMAGAR-DS-Results --platform=win32 --arch=x64 --overwrite --ignore=".github" --ignore="README.md" --ignore="LICENSE" --prune=true
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: AMAGAR-DS-Results-Windows
-          path: AMAGAR-DS-Results-win32-x64/
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18' # <-- Changed to 18 to fix ETARGET/compatibility errors
+    - run: npm install
+    - run: npx electron-packager . AMAGAR-DS-Results --platform=win32 --arch=x64 --overwrite --ignore=".github" --ignore="README.md" --ignore="LICENSE" --prune=true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: AMAGAR-DS-Results-Windows
+        path: AMAGAR-DS-Results-win32-x64/
